@@ -1,0 +1,177 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Dynamic CSS Variable Mappings */
+  --color-primary-red: var(--primary-red);
+  --color-primary-red-hover: var(--primary-red-hover);
+  --color-main: var(--main);
+  --color-main-hover: var(--main-hover);
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-highlight: var(--highlight);
+  --color-grid-line: var(--grid-line);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-base: var(--radius);
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  /* Brand & Accent Color Variables */
+  --primary-red: #e50000;
+  --primary-red-hover: #cc0000;
+  --main: var(--primary-red);
+  --main-hover: var(--primary-red-hover);
+
+  /* Layout & Surface Variables */
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+
+  /* Component Colors */
+  --primary: var(--primary-red);
+  --primary-foreground: #ffffff;
+  --secondary: #000000;
+  --secondary-foreground: #ffffff;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: var(--primary-red);
+  --accent-foreground: #ffffff;
+  --destructive: var(--primary-red);
+  --destructive-foreground: #ffffff;
+  --input: #ffffff;
+  --ring: var(--primary-red);
+  --highlight: #eab308;
+  --grid-line: #e5e7eb;
+
+  /* Borders & Shadows */
+  --border: #000000;
+  --shadow-color: #000000;
+  --radius: 0px;
+
+  /* Hard Shadows */
+  --shadow-brutal-sm: 2px 2px 0px 0px var(--shadow-color);
+  --shadow-brutal: 4px 4px 0px 0px var(--shadow-color);
+  --shadow-brutal-card: 5px 5px 0px 0px var(--shadow-color);
+  --shadow-brutal-lg: 8px 8px 0px 0px var(--shadow-color);
+}
+
+.dark {
+  /* Dark Mode Variables */
+  --primary-red: #ff3344;
+  --primary-red-hover: #e50000;
+  --main: var(--primary-red);
+  --main-hover: var(--primary-red-hover);
+
+  --background: #121212;
+  --foreground: #ffffff;
+  --card: #1e1e1e;
+  --card-foreground: #ffffff;
+  --popover: #1e1e1e;
+  --popover-foreground: #ffffff;
+
+  --primary: var(--primary-red);
+  --primary-foreground: #ffffff;
+  --secondary: #ffffff;
+  --secondary-foreground: #000000;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: var(--primary-red);
+  --accent-foreground: #ffffff;
+  --destructive: var(--primary-red);
+  --destructive-foreground: #ffffff;
+  --input: #1e1e1e;
+  --ring: var(--primary-red);
+  --highlight: #facc15;
+  --grid-line: #27272a;
+
+  --border: #000000;
+  --shadow-color: #000000;
+  --radius: 0px;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    border-radius: var(--radius) !important;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* ==========================================================================
+   BRUTALIST UTILITIES USING CSS VARIABLES
+   ========================================================================== */
+
+/* Hard Box Shadows using CSS variable */
+.shadow-brutal {
+  box-shadow: 4px 4px 0px 0px var(--shadow-color);
+}
+
+.shadow-brutal-card {
+  box-shadow: 5px 5px 0px 0px var(--shadow-color);
+}
+
+.shadow-brutal-lg {
+  box-shadow: 8px 8px 0px 0px var(--shadow-color);
+}
+
+/* Button Micro-Interactions */
+.brutal-btn-press {
+  transition: all 0.08s ease-in-out;
+}
+.brutal-btn-press:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--shadow-color);
+}
+.brutal-btn-press:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+/* Navigation Sidebar Active Style using CSS variables */
+.sidebar-item-active {
+  background-color: var(--primary-red);
+  color: var(--primary-foreground);
+  font-weight: 800;
+}
+
+/* Gridline Background using CSS variable */
+.bg-grid-auth {
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
