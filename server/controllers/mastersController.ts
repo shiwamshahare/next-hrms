@@ -14,7 +14,7 @@ const ALLOWED_TABLES: Record<string, string> = {
 export const getMasterList = async (req: Request, res: Response): Promise<void> => {
   try {
     const { type } = req.params;
-    if (!type || !ALLOWED_TABLES[type]) {
+    if (!type || typeof type !== "string" || !ALLOWED_TABLES[type]) {
       res.status(400).json({ success: false, message: "Invalid master table type" });
       return;
     }
@@ -32,7 +32,7 @@ export const createMasterRecord = async (req: Request, res: Response): Promise<v
     const { type } = req.params;
     const data = req.body;
 
-    if (!type || !ALLOWED_TABLES[type]) {
+    if (!type || typeof type !== "string" || !ALLOWED_TABLES[type]) {
       res.status(400).json({ success: false, message: "Invalid master table type" });
       return;
     }
@@ -91,7 +91,7 @@ export const createMasterRecord = async (req: Request, res: Response): Promise<v
 export const deleteMasterRecord = async (req: Request, res: Response): Promise<void> => {
   try {
     const { type, id } = req.params;
-    if (!type || !ALLOWED_TABLES[type] || !id) {
+    if (!type || typeof type !== "string" || !ALLOWED_TABLES[type] || !id || typeof id !== "string") {
       res.status(400).json({ success: false, message: "Invalid parameters" });
       return;
     }
